@@ -1,3 +1,9 @@
+@if (Auth::check())
+        <script type="text/javascript">
+        window.location.href='/dashboard';
+    </script> 
+@endif
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
