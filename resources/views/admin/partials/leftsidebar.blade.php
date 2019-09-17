@@ -6,14 +6,11 @@
         <div class="main-menu-header">
             <img class="img-80 img-radius" src="{{ asset('/files/assets/logo/miynlogo.png')}}" alt="User-Profile-Image">
             <div class="user-details">
-                <span id="more-details">user name</span>
+                <span id="more-details">{{ucfirst(Auth::user()->name)}}</span>
             </div>
         </div>
 
         
-    </div>
-    <div class="p-15 p-b-0">
-
     </div>
 
     <ul class="pcoded-item pcoded-left-item">
@@ -23,10 +20,20 @@
                 <span class="pcoded-mtext">Dashboard</span>
                 <span class="pcoded-mcaret"></span>
             </a>
-        </li>  
+        </li>        
+    </ul>
 
-        <li class="@yield('all_users')">
+    <ul class="pcoded-item pcoded-left-item">
+        
+        <li class="pcoded-hasmenu ">
             <a href="javascript:void(0)" class="waves-effect waves-dark">
+                <span class="pcoded-micon"><i class="ti-gift"></i><b>MS</b></span>
+                <span class="pcoded-mtext">MASTER</span>
+                <span class="pcoded-mcaret"></span>
+            </a>
+            <ul class="pcoded-submenu">
+                <li class="@yield('all_users')">
+            <a href="{{ route('all-packages') }}" class="waves-effect waves-dark">
                 <span class="pcoded-micon"><i class="ti-gift"></i><b>PA</b></span>
                 <span class="pcoded-mtext">List of  Packages</span>
                 <span class="pcoded-mcaret"></span>
@@ -80,33 +87,7 @@
                 <span class="pcoded-mtext">List of  Language</span>
                 <span class="pcoded-mcaret"></span>
             </a>
-        </li>   
-        
-    </ul>
-
-    <ul class="pcoded-item pcoded-left-item">
-        
-        <li class="pcoded-hasmenu ">
-            <a href="javascript:void(0)" class="waves-effect waves-dark">
-                <span class="pcoded-micon"><i class="ti-gift"></i><b>OP</b></span>
-                <span class="pcoded-mtext">Industry</span>
-                <span class="pcoded-mcaret"></span>
-            </a>
-            <ul class="pcoded-submenu">
-                <li class="@yield('industry_add')">
-                    <a href="javascript:void(0)" class="waves-effect waves-dark">
-                        <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                        <span class="pcoded-mtext">Add Industry</span>
-                        <span class="pcoded-mcaret"></span>
-                    </a>
-                </li>
-                <li class="@yield('industry_all')">
-                    <a href="javascript:void(0)" class="waves-effect waves-dark">
-                        <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                        <span class="pcoded-mtext">All Industry</span>
-                        <span class="pcoded-mcaret"></span>
-                    </a>
-                </li>
+        </li>  
                 
             </ul>
         </li>

@@ -14,7 +14,7 @@
     <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
     <meta name="author" content="Phoenixcoded" />
     <!-- Favicon icon -->
-    <link rel="icon" href="{{ asset('/files/assets/images/miynlogo.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('/files/assets/logo/miynlogo.png') }}" type="image/x-icon">
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
     <!-- waves.css -->
@@ -30,19 +30,15 @@
     <!-- scrollbar.css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('/files/assets/css/jquery.mCustomScrollbar.css') }}">
     <!-- am chart export.css -->
-<!--    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css') }}" type="text/css" media="all" />-->
-    <!-- radial chart.css -->
-<!--    <link rel="stylesheet" href="{{ asset('/files/assets/pages/chart/radial/css/radial.css') }}" type="text/css" media="all">-->
-    <!-- Style.css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('/files/assets/css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/files/assets/css/jquery.mCustomScrollbar.css') }}">
+    <!--    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css') }}" type="text/css" media="all" />-->
+        <!-- radial chart.css -->
+    <!--    <link rel="stylesheet" href="{{ asset('/files/assets/pages/chart/radial/css/radial.css') }}" type="text/css" media="all">-->
+        <!-- Style.css -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('/files/assets/css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('/files/assets/css/jquery.mCustomScrollbar.css') }}">
 
 
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>-->
-        <!-- Latest compiled and minified CSS -->
-
-<!--    <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>-->
-
+    
      <link rel="stylesheet" type="text/css" href="{{ asset('/files/assets/css/jquery.mCustomScrollbar.css') }}">
      <style type="text/css">
          #noty-holder{    
@@ -128,6 +124,28 @@
     </div>
     <!-- Pre-loader end -->
 	
+    <!-- modal start -->
+
+    <div class="modal fade modal-flex" id="large-Modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Modal titles</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                
+            </div>
+            <div class="modal-body text-center">
+               
+                <p class="m-t-10"></p>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+    <!-- modal end -->
 	
     <div id="pcoded" class="pcoded">
         <div class="pcoded-overlay-box"></div>
@@ -191,7 +209,6 @@
         </div>
     </div>
     
-    <script type="text/javascript" src="{{asset('/multistep_form/files/bower_components/modernizr/js/css-scrollbars.js')}}"></script>
 
     <!-- Required Jquery -->
     <script type="text/javascript" src="{{ asset('/files/bower_components/jquery/js/jquery.min.js')}}"></script>
@@ -208,21 +225,10 @@
     <!-- slimscroll js -->
     <script type="text/javascript" src="{{ asset('/files/assets/js/SmoothScroll.js')}}"></script>
     <script src="{{ asset('/files/assets/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
-    <!-- Chart js -->
-    <script type="text/javascript" src="{{ asset('/files/bower_components/chart.js/js/Chart.js')}}"></script>
-	
-	
-    <!-- amchart js -->
-<!--    <script src="https://www.amcharts.com/lib/3/amcharts.js')}}"></script>
-    <script src="{{ asset('/files/assets/pages/widget/amchart/gauge.min.js')}}"></script>
-    <script src="{{ asset('/files/assets/pages/widget/amchart/serial.min.js')}}"></script>
-    <script src="{{ asset('/files/assets/pages/widget/amchart/light.min.js')}}"></script>
-    <script src="{{ asset('/files/assets/pages/widget/amchart/pie.min.js')}}"></script>
-    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js')}}"></script>
-	-->
+    
 	
     <!-- Google map js -->
-<!--    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js')}}"></script>
+    <!--    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js')}}"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true')}}"></script>
     <script type="text/javascript" src="{{ asset('/files/assets/pages/google-maps/gmaps.js')}}"></script>-->
 
@@ -230,10 +236,42 @@
     <script src="{{ asset('/files/assets/js/pcoded.min.js')}}"></script>
     <script src="{{ asset('/files/assets/js/vertical/vertical-layout.min.js')}}"></script>
     <!-- custom js -->
-    <script type="text/javascript" src="{{ asset('/files/assets/pages/dashboard/custom-dashboard.js')}}"></script>
     <script type="text/javascript" src="{{ asset('/files/assets/js/script.js')}}"></script>
 
-    
+    <script type="text/javascript">
+        
+        // Fill modal with content from link href
+$(".modal").on("show.bs.modal", function(e) {
+    var link = $(e.relatedTarget);
+        //alert(link.attr("href"));
+     //$(".modal-body").load(link.attr("href"));
+     $(".modal-title").html(link.attr("pageName"));
+      var variable = link.attr("href");
+     // alert(variable+'Myname');
+      if( typeof variable === 'undefined' || variable === null ){
+    // Do stuff
+        // alert('called');
+      } else {
+         $('.modal-body').html('<div style="display:block; text-align:center">loading</div>');
+           $(".theme-loader").fadeIn("slow");
+           //alert(variable);
+           $.ajax({
+                type: 'get',
+                url: link.attr("href"),
+                //data:{id: id},
+                success: function(data) {
+                    $(".theme-loader").fadeOut("slow");
+                    $('.modal-body').html(data);
+                },
+                error:function(err){
+                  alert("error"+JSON.stringify(err));
+                }
+            });
+      } 
+});
+
+
+    </script>
 
     @yield('scripts')
 </body>
