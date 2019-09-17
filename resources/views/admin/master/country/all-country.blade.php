@@ -39,7 +39,7 @@
         <div class="row align-items-center">
             <div class="col-md-8">
                 <div class="page-header-title">
-                    <h5 class="m-b-10">All Packages</h5>
+                    <h5 class="m-b-10">All Country</h5>
                 </div>
             </div>
             
@@ -63,10 +63,10 @@
            </div>
         @endif
         <div class="card-header">
-            <h5>All Package list</h5>
+            <h5>All Country list</h5>
             <span style="float: right;">
 
-            	<a href="{{ route('modal.data') }}" pageName="Add New Package" data-remote="false" data-toggle="modal" data-target=".modal" class="btn btn-sm btn-primary waves-effect md-trigger"> Add New </a>
+            	<a href="{{ route('add.country') }}" pageName="Add New Country" data-remote="false" data-toggle="modal" data-target=".modal" class="btn btn-sm btn-primary waves-effect md-trigger"> Add New </a>
 
             	<button class="btn btn-sm btn-primary btn-danger" onclick="window.location.reload()" > Refresh </button>
             </span>
@@ -74,12 +74,12 @@
         <div class="card-block">
 
         	<div class="">
-                <table id="posts" class="display compact nowrap table-bordered" style="width:100%">
+                <table id="country" class="display compact nowrap table-bordered" style="width:100%">
                     <thead>
                         <tr>
                            <th>Id</th>
-                           <th>Name</th>
-                           <th>Description</th>
+                           <th>Country Name</th>
+                           <th>Country Code</th>
                            <th data-orderable="false">Created At</th>
                            <th width="100" data-orderable="false">Options</th>
                         </tr>
@@ -123,21 +123,21 @@
 
 <script>
     $(document).ready(function () {
-        $('#posts').DataTable({
+        $('#country').DataTable({
             "processing": true,
             'responsive': true,
             "serverSide": true,
             "orderClasses": false,
             "ajax":{
-                     "url": "{{ url('allposts') }}",
+                     "url": "{{ url('all-country-show') }}",
                      "dataType": "json",
                      "type": "POST",
                      "data":{ _token: "{{csrf_token()}}"}
                    },
             "columns": [
                 { "data": "id" },
-                { "data": "package_name" },
-                { "data": "package_description" },
+                { "data": "country_name" },
+                { "data": "country_code" },
                 { "data": "created_at" },
                 { "data": "options" }
             ],

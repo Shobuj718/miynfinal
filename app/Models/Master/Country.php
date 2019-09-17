@@ -5,9 +5,9 @@ namespace App\Models\Master;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Package extends Model
+class Country extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['package_name', 'package_description'];
+    protected $fillable = ['name', 'code'];
 }

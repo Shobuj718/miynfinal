@@ -47,7 +47,7 @@
             </a>
         </li>
         <li class="@yield('all_users')">
-            <a href="javascript:void(0)" class="waves-effect waves-dark">
+            <a href="{{ route('all.country') }}" class="waves-effect waves-dark">
                 <span class="pcoded-micon"><i class="ti-gift"></i><b>PA</b></span>
                 <span class="pcoded-mtext">List of  Country</span>
                 <span class="pcoded-mcaret"></span>

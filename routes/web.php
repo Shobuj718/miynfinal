@@ -24,6 +24,8 @@ Route::get('/test', 'HomeController@testfunction')->name('test');
 
 
 Route::group(['middleware' => ['auth']], function(){
+
+	// package related route
 	Route::get('/all-packages', 'Master\PackageController@allPackages')->name('all-packages');
 	Route::get('/package-json-data', 'Master\PackageController@allposts')->name('package.json.data');
 
@@ -40,6 +42,15 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::get('/modal-data-check', 'Master\PackageController@modalDataCheck')->name('modal.data.check');
 
 	Route::post('/package-add-new', 'Master\PackageController@packageAddNew')->name('package.new.add');
+
+	//country related route
+	Route::get('/all-country', 'Master\CountryContrller@allCountry')->name('all.country');
+	Route::post('/all-country-show', 'Master\CountryContrller@allCountryShow')->name('all.country.show');
+	Route::get('/add-country', 'Master\CountryContrller@addCountry')->name('add.country');
+	Route::post('/add-country', 'Master\CountryContrller@insertCountry')->name('insert.country');
+	Route::get('/show-country', 'Master\CountryContrller@editCountry')->name('country.show');
+	Route::get('/edit-country/{id}', 'Master\CountryContrller@editCountry')->name('country.edit');
+	Route::post('/update-country/{id}', 'Master\CountryContrller@updateCountry')->name('country.update');
 });
 
 
