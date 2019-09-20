@@ -16,7 +16,6 @@ class CountryContrller extends Controller
     public function allCountryShow(Request $request)
     {
     	
-        
         $columns = array( 
                             0 =>'id', 
                             1 =>'country_name',
@@ -63,17 +62,15 @@ class CountryContrller extends Controller
         {
             foreach ($countries as $value)
             {
-                $show =  route('country.show',$value->id);
                 $edit =  route('country.edit',$value->id);
 
                 $nestedData['id'] = $value->id;
                 $nestedData['country_name'] = $value->country_name;
-                $nestedData['country_code'] = substr(strip_tags($value->country_code),0,50)."...";
+                $nestedData['country_code'] = substr(strip_tags($value->country_code),0,50);
                 $nestedData['created_at'] = date('j M Y h:i a',strtotime($value->created_at));
                 $nestedData['options'] = "<a href='{$edit}' class='btn btn-sm btn-warning ' pagename='Single country edit' data-remote='false' data-toggle='modal' data-target='.modal'>edit</a>";
                 $data[] = $nestedData;
 
-                /*<a href='{$show}' class='btn btn-sm btn-info ' pagename='Single package details' data-remote='false' data-toggle='modal' data-target='.modal' >show</a>*/
 
             }
         }

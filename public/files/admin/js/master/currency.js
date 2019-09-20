@@ -1,26 +1,26 @@
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
-    function countryDataSubmit(){
-	    var country_name = $('#country_name').val();
-	    var country_code = $('#country_code').val();
-	    console.log(country_name)
+    function addCurrencyData(){
+	    var currency_name = $('#currency_name').val();
+	    var currency_shortcode = $('#currency_shortcode').val();
+	    console.log(currency_name)
 
 	    var next_step = true;
 	    var count = 0;
 
-	    if(country_name === ''){
-            //alert('Please enter your package country_name.');
-            $('#country_name').focus();
-             $('.error_name').html('<span style="color:red;float:left;">Enter country name</p>');
+	    if(currency_name === ''){
+            //alert('Please enter your package currency_name.');
+            $('#currency_name').focus();
+             $('.error_name').html('<span style="color:red;float:left;">Enter currency name</p>');
             next_step = false;
         }
         else{
             $('.error_name').html('<span style="display:none"/>')
         }
-	    if(country_code === ''){
+	    if(currency_shortcode === ''){
             //alert('Please enter your package name.');
-            $('#country_code').focus();
-             $('.error_code').html('<span style="color:red;float:left;">Enter country code</p>');
+            $('#currency_shortcode').focus();
+             $('.error_code').html('<span style="color:red;float:left;">Enter currency short code</p>');
             next_step = false;
         }
         else{
@@ -33,9 +33,9 @@
 	    if(next_step && count == 0){
 	    	count++;
 	        $.ajax({
-	            url : "/add-country",
+	            url : "/add-currency",
 	            type: 'post',
-	            data: {_token:CSRF_TOKEN, country_name:country_name, country_code:country_code},
+	            data: {_token:CSRF_TOKEN, currency_name:currency_name, currency_shortcode:currency_shortcode},
 	            success: function (data) {
 	                console.log(data);
 
@@ -51,9 +51,8 @@
 	                	$("#formID")[0].reset();
 
 		               	// Redraw Table After Insert										
-						var table = $('#country').DataTable();
+						var table = $('#currency').DataTable();
 
-						$('.input-sm').val("");
 						// #myInput is a <input type="text"> element
 						$('.input-sm').on( 'keyup', function () {
 							table.search( this.value ).draw();
@@ -86,28 +85,29 @@
 	    }
 	}
 
-	function editCountryData(){
-	    var country_name = $('#country_name').val();
-	    var country_code = $('#country_code').val();
+	function editCurrencyData(){
+	    var currency_name = $('#currency_name').val();
+	    var currency_shortcode = $('#currency_shortcode').val();
 	    var id = $('#id').val();
-	    console.log(id);
+	    
+	    console.log(currency_name)
 
 	    var next_step = true;
 	    var count = 0;
 
-	    if(country_name === ''){
-            //alert('Please enter your package country_name.');
-            $('#country_name').focus();
-             $('.error_name').html('<span style="color:red;float:left;">Enter country name</p>');
+	    if(currency_name === ''){
+            //alert('Please enter your package currency_name.');
+            $('#currency_name').focus();
+             $('.error_name').html('<span style="color:red;float:left;">Enter currency name</p>');
             next_step = false;
         }
         else{
             $('.error_name').html('<span style="display:none"/>')
         }
-	    if(country_code === ''){
+	    if(currency_shortcode === ''){
             //alert('Please enter your package name.');
-            $('#country_code').focus();
-             $('.error_code').html('<span style="color:red;float:left;">Enter country code</p>');
+            $('#currency_shortcode').focus();
+             $('.error_code').html('<span style="color:red;float:left;">Enter currency short code</p>');
             next_step = false;
         }
         else{
@@ -119,9 +119,9 @@
 	    if(next_step && count == 0){
 	    	count++;
 	        $.ajax({
-	            url : "/update-country/"+id,
+	            url : "/edit-currency/"+id,
 	            type: 'post',
-	            data: {_token:CSRF_TOKEN, country_name:country_name, country_code:country_code, id:id},
+	            data: {_token:CSRF_TOKEN, currency_name:currency_name, currency_shortcode:currency_shortcode, id:id},
 	            success: function (data) {
 	                console.log(data);
 
@@ -135,10 +135,10 @@
 	                	count++;
 
 						// reset form field
-	                	$("#country")[0].reset();
+	                	$("#formID")[0].reset();
 
 		               	// Redraw Table After Insert										
-						var table = $('#posts').DataTable();
+						var table = $('#currency').DataTable();
 
 						$('.input-sm').val("");
 						// #myInput is a <input type="text"> element

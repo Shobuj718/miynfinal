@@ -17,7 +17,7 @@
                 </div>
             </div>
         </div>
-        <a href="#" style="display: inline-block;float: none; width: 157px;height: 58px;">
+        <a href="{{ url('/dashboard') }}" style="display: inline-block;float: none; width: 157px;height: 58px;">
             <img class="" src="{{ asset('/files/assets/logo/miynlogo.png') }}" style="display: inline-block;float: none; width: 75px;height: 58px;" alt="miyn-Logo" />
             <!-- <img class="img-fluid" src="{{ asset('/files/assets/images/logo.png') }}" alt="Theme-Logo" /> -->
         </a>
@@ -50,7 +50,7 @@
             
            
             <li class="user-profile header-notification">
-                <a href="javascript:void(0)" class="waves-effect waves-light">
+                <a href="{{ url('/dashboard') }}" class="waves-effect waves-light">
                     <img src="{{asset('/files/assets/images/avatar-blank.jpg')}}" class="img-radius" alt="User-Profile-Image">
                     <span>{{ucfirst(Auth::user()->name)}}</span>
                     <i class="ti-angle-down"></i>

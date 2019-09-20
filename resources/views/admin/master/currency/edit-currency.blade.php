@@ -12,21 +12,22 @@
 </style>
 <form id="formID" class="form-horizontal formular form-label-left" action="javascript:void(0)">
 	<fieldset>
-		<label class="package-lebel"> Country Name </label>
-		<input type="text" class="form-control" name="country_name" id="country_name" placeholder="Enter country name" required >
+		<label class="package-lebel"> Currency Name </label>
+		<input type="text" class="form-control" name="currency_name" id="currency_name" value="{{ $currency->currency_name }}" placeholder="Enter currency name" required >
+		<input type="hidden" class="form-control" name="id" id="id" value="{{ $currency->id }}">
 		<span class="error_name"></span>
 	</fieldset>
 	<br>
 	<fieldset>
-		<label class="package-lebel"> Country Code </label>
-		<textarea class="form-control" name="country_code" id="country_code" placeholder="Enter country code" required></textarea>
+		<label class="package-lebel"> Currency Short Code </label>
+		<input type="text" class="form-control" name="currency_shortcode" id="currency_shortcode" value="{{ $currency->currency_shortcode }}" placeholder="Enter currency short code" required >
 		<span class="error_code"></span>
 	</fieldset>
 
 
 	<div class="modal-footer">
 	    <button type="button" class="btn btn-default waves-effect " data-dismiss="modal" >Close</button>
-	    <button type="submit" onclick="countryDataSubmit()" class="btn btn-primary waves-effect waves-light ">Save</button>
+	    <button type="submit" onclick="editCurrencyData()" class="btn btn-primary waves-effect waves-light ">Save</button>
 	</div>
 </form>
 </div>
@@ -37,5 +38,6 @@
 
 
 <!-- Custom js -->
-<script type="text/javascript" src="{{ asset('/files/admin/js/master/country.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/files/admin/js/master/currency.js') }}"></script>
+
 

@@ -1,30 +1,20 @@
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
-    function countryDataSubmit(){
-	    var country_name = $('#country_name').val();
-	    var country_code = $('#country_code').val();
-	    console.log(country_name)
+    function addBusinessCategory(){
+	    var business_category_name = $('#business_category_name').val();
+	    console.log(business_category_name)
 
 	    var next_step = true;
 	    var count = 0;
 
-	    if(country_name === ''){
-            //alert('Please enter your package country_name.');
-            $('#country_name').focus();
-             $('.error_name').html('<span style="color:red;float:left;">Enter country name</p>');
+	    if(business_category_name === ''){
+            //alert('Please enter your package business_category_name.');
+            $('#business_category_name').focus();
+             $('.error_name').html('<span style="color:red;float:left;">Enter business category name</p>');
             next_step = false;
         }
         else{
             $('.error_name').html('<span style="display:none"/>')
-        }
-	    if(country_code === ''){
-            //alert('Please enter your package name.');
-            $('#country_code').focus();
-             $('.error_code').html('<span style="color:red;float:left;">Enter country code</p>');
-            next_step = false;
-        }
-        else{
-            $('.error_code').html('<span style="display:none"/>')
         }
 
 	    //alert(name);
@@ -33,9 +23,9 @@
 	    if(next_step && count == 0){
 	    	count++;
 	        $.ajax({
-	            url : "/add-country",
+	            url : "/add-business-category",
 	            type: 'post',
-	            data: {_token:CSRF_TOKEN, country_name:country_name, country_code:country_code},
+	            data: {_token:CSRF_TOKEN, business_category_name:business_category_name },
 	            success: function (data) {
 	                console.log(data);
 
@@ -51,9 +41,8 @@
 	                	$("#formID")[0].reset();
 
 		               	// Redraw Table After Insert										
-						var table = $('#country').DataTable();
+						var table = $('#business-category').DataTable();
 
-						$('.input-sm').val("");
 						// #myInput is a <input type="text"> element
 						$('.input-sm').on( 'keyup', function () {
 							table.search( this.value ).draw();
@@ -86,32 +75,23 @@
 	    }
 	}
 
-	function editCountryData(){
-	    var country_name = $('#country_name').val();
-	    var country_code = $('#country_code').val();
+	function editBusinessCategory(){
+	    var business_category_name = $('#business_category_name').val();
 	    var id = $('#id').val();
-	    console.log(id);
+	    
+	    console.log(business_category_name)
 
 	    var next_step = true;
 	    var count = 0;
 
-	    if(country_name === ''){
-            //alert('Please enter your package country_name.');
-            $('#country_name').focus();
-             $('.error_name').html('<span style="color:red;float:left;">Enter country name</p>');
+	    if(business_category_name === ''){
+            //alert('Please enter your package business_category_name.');
+            $('#business_category_name').focus();
+             $('.error_name').html('<span style="color:red;float:left;">Enter currency name</p>');
             next_step = false;
         }
         else{
             $('.error_name').html('<span style="display:none"/>')
-        }
-	    if(country_code === ''){
-            //alert('Please enter your package name.');
-            $('#country_code').focus();
-             $('.error_code').html('<span style="color:red;float:left;">Enter country code</p>');
-            next_step = false;
-        }
-        else{
-            $('.error_code').html('<span style="display:none"/>')
         }
 
 	    //return false;
@@ -119,9 +99,9 @@
 	    if(next_step && count == 0){
 	    	count++;
 	        $.ajax({
-	            url : "/update-country/"+id,
+	            url : "/edit-business-category/"+id,
 	            type: 'post',
-	            data: {_token:CSRF_TOKEN, country_name:country_name, country_code:country_code, id:id},
+	            data: {_token:CSRF_TOKEN, business_category_name:business_category_name, id:id},
 	            success: function (data) {
 	                console.log(data);
 
@@ -135,10 +115,9 @@
 	                	count++;
 
 						// reset form field
-	                	$("#country")[0].reset();
 
 		               	// Redraw Table After Insert										
-						var table = $('#posts').DataTable();
+						var table = $('#business-category').DataTable();
 
 						$('.input-sm').val("");
 						// #myInput is a <input type="text"> element

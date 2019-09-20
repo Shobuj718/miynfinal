@@ -1,7 +1,7 @@
 @extends('admin.dashboard')
 
 @section('master', 'pcoded-hasmenu active pcoded-trigger')
-@section('country', 'active')
+@section('language', 'active')
 
 @section('styles')
  <!-- Data Table Css -->
@@ -52,10 +52,10 @@
            </div>
         @endif
         <div class="card-header">
-            <h5>All Country list</h5>
+            <h5>All Language list</h5>
             <span style="float: right;">
 
-            	<a href="{{ route('add.country') }}" pageName="Add New Country" data-remote="false" data-toggle="modal" data-target=".modal" class="btn btn-sm btn-primary waves-effect md-trigger"> Add New </a>
+            	<a href="{{ route('add.language') }}" pageName="Add New Language" data-remote="false" data-toggle="modal" data-target=".modal" class="btn btn-sm btn-primary waves-effect md-trigger"> Add New </a>
 
             	<button class="btn btn-sm btn-primary btn-danger" onclick="window.location.reload()" > Refresh </button>
             </span>
@@ -63,17 +63,17 @@
         <div class="card-block">
 
         	<div class="">
-                <table id="country" class="display compact nowrap table-bordered" style="width:100%">
+                <table id="language" class="display compact nowrap table-bordered" style="width:100%">
                     <thead>
                         <tr>
                            <th>Id</th>
-                           <th>Country Name</th>
-                           <th>Country Code</th>
+                           <th>Language Name</th>
+                           <th>Short Name</th>
                            <th data-orderable="false">Created At</th>
-                           <th width="100" data-orderable="false">Options</th>
+                           <th width="100" data-orderable="false">Action</th>
                         </tr>
                     </thead>
-			</table>
+			          </table>
 
            
         </div>
@@ -112,21 +112,21 @@
 
 <script>
     $(document).ready(function () {
-        $('#country').DataTable({
+        $('#language').DataTable({
             "processing": true,
             'responsive': true,
             "serverSide": true,
             "orderClasses": false,
             "ajax":{
-                     "url": "{{ url('all-country-show') }}",
+                     "url": "{{ url('all-language-show') }}",
                      "dataType": "json",
                      "type": "POST",
                      "data":{ _token: "{{csrf_token()}}"}
                    },
             "columns": [
                 { "data": "id" },
-                { "data": "country_name" },
-                { "data": "country_code" },
+                { "data": "language_name" },
+                { "data": "short_name" },
                 { "data": "created_at" },
                 { "data": "options" }
             ],

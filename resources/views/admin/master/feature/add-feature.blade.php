@@ -12,21 +12,16 @@
 </style>
 <form id="formID" class="form-horizontal formular form-label-left" action="javascript:void(0)">
 	<fieldset>
-		<label class="package-lebel"> Country Name </label>
-		<input type="text" class="form-control" name="country_name" id="country_name" placeholder="Enter country name" required >
+		<label class="package-lebel"> Feature Name </label>
+		<input type="text" class="form-control" name="feature_name" id="feature_name" placeholder="Enter feature name" required >
 		<span class="error_name"></span>
 	</fieldset>
 	<br>
-	<fieldset>
-		<label class="package-lebel"> Country Code </label>
-		<textarea class="form-control" name="country_code" id="country_code" placeholder="Enter country code" required></textarea>
-		<span class="error_code"></span>
-	</fieldset>
 
 
 	<div class="modal-footer">
 	    <button type="button" class="btn btn-default waves-effect " data-dismiss="modal" >Close</button>
-	    <button type="submit" onclick="countryDataSubmit()" class="btn btn-primary waves-effect waves-light ">Save</button>
+	    <button type="submit" onclick="addFeature()" class="btn btn-primary waves-effect waves-light ">Save</button>
 	</div>
 </form>
 </div>
@@ -37,5 +32,6 @@
 
 
 <!-- Custom js -->
-<script type="text/javascript" src="{{ asset('/files/admin/js/master/country.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/files/admin/js/master/feature.js') }}"></script>
+
 

@@ -1,8 +1,5 @@
 @extends('admin.dashboard')
 
-@section('master', 'pcoded-hasmenu active pcoded-trigger')
-@section('country', 'active')
-
 @section('styles')
  <!-- Data Table Css -->
       <link rel="stylesheet" type="text/css" href="{{ asset('/files/bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
@@ -36,6 +33,7 @@
 
 </style>
 @endsection
+
 @section('main-content')
 
 <div class="page-body">
@@ -52,10 +50,10 @@
            </div>
         @endif
         <div class="card-header">
-            <h5>All Country list</h5>
+            <h5>All Timezone list</h5>
             <span style="float: right;">
 
-            	<a href="{{ route('add.country') }}" pageName="Add New Country" data-remote="false" data-toggle="modal" data-target=".modal" class="btn btn-sm btn-primary waves-effect md-trigger"> Add New </a>
+            	<a href="{{ route('add.timezone') }}" pageName="Add New Timezone" data-remote="false" data-toggle="modal" data-target=".modal" class="btn btn-sm btn-primary waves-effect md-trigger"> Add New </a>
 
             	<button class="btn btn-sm btn-primary btn-danger" onclick="window.location.reload()" > Refresh </button>
             </span>
@@ -67,10 +65,12 @@
                     <thead>
                         <tr>
                            <th>Id</th>
-                           <th>Country Name</th>
-                           <th>Country Code</th>
+                           <th>City Name</th>
+                           <th>Timezone Name</th>
+                           <th>Timezone GMT</th>
+                           <th>Timezone Offset</th>
                            <th data-orderable="false">Created At</th>
-                           <th width="100" data-orderable="false">Options</th>
+                           <th width="100" data-orderable="false">Action</th>
                         </tr>
                     </thead>
 			</table>
@@ -118,15 +118,17 @@
             "serverSide": true,
             "orderClasses": false,
             "ajax":{
-                     "url": "{{ url('all-country-show') }}",
+                     "url": "{{ url('all-timezone-show') }}",
                      "dataType": "json",
                      "type": "POST",
                      "data":{ _token: "{{csrf_token()}}"}
                    },
             "columns": [
                 { "data": "id" },
-                { "data": "country_name" },
-                { "data": "country_code" },
+                { "data": "city_name" },
+                { "data": "timezone_name" },
+                { "data": "timezone_gmt" },
+                { "data": "timezone_offset" },
                 { "data": "created_at" },
                 { "data": "options" }
             ],

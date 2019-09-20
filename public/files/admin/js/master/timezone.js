@@ -1,41 +1,58 @@
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
-    function countryDataSubmit(){
-	    var country_name = $('#country_name').val();
-	    var country_code = $('#country_code').val();
-	    console.log(country_name)
+    function addTimezone(){
+	    var city_name 		= $('#city_name').val();
+	    var timezone_name 	= $('#timezone_name').val();
+	    var timezone_offset = $('#timezone_offset').val();
+	    var timezone_gmt 	= $('#timezone_gmt').val();
+	    console.log(timezone_name)
 
 	    var next_step = true;
 	    var count = 0;
 
-	    if(country_name === ''){
-            //alert('Please enter your package country_name.');
-            $('#country_name').focus();
+	    if(city_name === ''){
+            //alert('Please enter your package city_name.');
+            $('#city_name').focus();
+             $('.error_city_name').html('<span style="color:red;float:left;">Enter city name</p>');
+            next_step = false;
+        }
+        else{
+            $('.error_city_name').html('<span style="display:none"/>')
+        }
+	    if(timezone_name === ''){
+            //alert('Please enter your package timezone_name.');
+            $('#timezone_name').focus();
              $('.error_name').html('<span style="color:red;float:left;">Enter country name</p>');
             next_step = false;
         }
         else{
             $('.error_name').html('<span style="display:none"/>')
         }
-	    if(country_code === ''){
-            //alert('Please enter your package name.');
-            $('#country_code').focus();
-             $('.error_code').html('<span style="color:red;float:left;">Enter country code</p>');
+	    if(timezone_gmt === ''){
+            //alert('Please enter your package timezone_gmt.');
+            $('#timezone_gmt').focus();
+             $('.error_timezone_gmt').html('<span style="color:red;float:left;">Enter timezone gmt</p>');
+            next_step = false;
+        }
+        else{
+            $('.error_timezone_gmt').html('<span style="display:none"/>')
+        }
+	    if(timezone_offset === ''){
+            //alert('Please enter your package timezone_offset.');
+            $('#timezone_offset').focus();
+             $('.error_code').html('<span style="color:red;float:left;">Enter timezone offset</p>');
             next_step = false;
         }
         else{
             $('.error_code').html('<span style="display:none"/>')
         }
 
-	    //alert(name);
-	    //return false;
-
 	    if(next_step && count == 0){
 	    	count++;
 	        $.ajax({
-	            url : "/add-country",
+	            url : "/add-timezone",
 	            type: 'post',
-	            data: {_token:CSRF_TOKEN, country_name:country_name, country_code:country_code},
+	            data: {_token:CSRF_TOKEN, city_name:city_name, timezone_name:timezone_name, timezone_gmt:timezone_gmt, timezone_offset:timezone_offset},
 	            success: function (data) {
 	                console.log(data);
 
@@ -53,7 +70,6 @@
 		               	// Redraw Table After Insert										
 						var table = $('#country').DataTable();
 
-						$('.input-sm').val("");
 						// #myInput is a <input type="text"> element
 						$('.input-sm').on( 'keyup', function () {
 							table.search( this.value ).draw();
@@ -86,42 +102,64 @@
 	    }
 	}
 
-	function editCountryData(){
-	    var country_name = $('#country_name').val();
-	    var country_code = $('#country_code').val();
-	    var id = $('#id').val();
-	    console.log(id);
+	function editTimezone(){
+	    var city_name       = $('#city_name').val();
+	    var timezone_name   = $('#timezone_name').val();
+	    var timezone_offset = $('#timezone_offset').val();
+	    var timezone_gmt    = $('#timezone_gmt').val();
+	    var id    			= $('#id').val();
+	    
+	    console.log(timezone_name);
 
 	    var next_step = true;
 	    var count = 0;
 
-	    if(country_name === ''){
-            //alert('Please enter your package country_name.');
-            $('#country_name').focus();
+	    if(city_name === ''){
+            //alert('Please enter your package city_name.');
+            $('#city_name').focus();
+             $('.error_city_name').html('<span style="color:red;float:left;">Enter city name</p>');
+            next_step = false;
+        }
+        else{
+            $('.error_city_name').html('<span style="display:none"/>')
+        }
+	    if(timezone_name === ''){
+            //alert('Please enter your package timezone_name.');
+            $('#timezone_name').focus();
              $('.error_name').html('<span style="color:red;float:left;">Enter country name</p>');
             next_step = false;
         }
         else{
             $('.error_name').html('<span style="display:none"/>')
         }
-	    if(country_code === ''){
-            //alert('Please enter your package name.');
-            $('#country_code').focus();
-             $('.error_code').html('<span style="color:red;float:left;">Enter country code</p>');
+	    if(timezone_gmt === ''){
+            //alert('Please enter your package timezone_gmt.');
+            $('#timezone_gmt').focus();
+             $('.error_timezone_gmt').html('<span style="color:red;float:left;">Enter timezone gmt</p>');
+            next_step = false;
+        }
+        else{
+            $('.error_timezone_gmt').html('<span style="display:none"/>')
+        }
+	    if(timezone_offset === ''){
+            //alert('Please enter your package timezone_offset.');
+            $('#timezone_offset').focus();
+             $('.error_code').html('<span style="color:red;float:left;">Enter timezone offset</p>');
             next_step = false;
         }
         else{
             $('.error_code').html('<span style="display:none"/>')
         }
 
+        //alert(id);
 	    //return false;
 
 	    if(next_step && count == 0){
 	    	count++;
 	        $.ajax({
-	            url : "/update-country/"+id,
+	            url : "/update-timezone/"+id,
 	            type: 'post',
-	            data: {_token:CSRF_TOKEN, country_name:country_name, country_code:country_code, id:id},
+	            data: {_token:CSRF_TOKEN, city_name:city_name, timezone_name:timezone_name, timezone_gmt:timezone_gmt, timezone_offset:timezone_offset, id:id},
 	            success: function (data) {
 	                console.log(data);
 
@@ -135,7 +173,7 @@
 	                	count++;
 
 						// reset form field
-	                	$("#country")[0].reset();
+	                	$("#formID")[0].reset();
 
 		               	// Redraw Table After Insert										
 						var table = $('#posts').DataTable();

@@ -12,21 +12,19 @@
 </style>
 <form id="formID" class="form-horizontal formular form-label-left" action="javascript:void(0)">
 	<fieldset>
-		<label class="package-lebel"> Country Name </label>
-		<input type="text" class="form-control" name="country_name" id="country_name" placeholder="Enter country name" required >
+		<label class="package-lebel"> Industry Name </label>
+		<input type="text" class="form-control" name="industry_name" id="industry_name" value="{{ $industry->industry_name }}" placeholder="Enter industry name" required >
+
+		<input type="hidden" class="form-control" name="id" id="id" value="{{ $industry->id }}" placeholder="Enter industry name" required >
+
 		<span class="error_name"></span>
 	</fieldset>
 	<br>
-	<fieldset>
-		<label class="package-lebel"> Country Code </label>
-		<textarea class="form-control" name="country_code" id="country_code" placeholder="Enter country code" required></textarea>
-		<span class="error_code"></span>
-	</fieldset>
 
 
 	<div class="modal-footer">
 	    <button type="button" class="btn btn-default waves-effect " data-dismiss="modal" >Close</button>
-	    <button type="submit" onclick="countryDataSubmit()" class="btn btn-primary waves-effect waves-light ">Save</button>
+	    <button type="submit" onclick="editIndustry()" class="btn btn-primary waves-effect waves-light ">Save</button>
 	</div>
 </form>
 </div>
@@ -37,5 +35,6 @@
 
 
 <!-- Custom js -->
-<script type="text/javascript" src="{{ asset('/files/admin/js/master/country.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/files/admin/js/master/industry.js') }}"></script>
+
 

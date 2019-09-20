@@ -1,5 +1,9 @@
 @extends('admin.dashboard')
 
+@section('master', 'pcoded-hasmenu active pcoded-trigger')
+@section('packages', 'active')
+
+
 @section('styles')
  <!-- Data Table Css -->
       <link rel="stylesheet" type="text/css" href="{{ asset('/files/bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
