@@ -85,43 +85,44 @@
 	    }
 	}
 
-	function editCurrencyData(){
-	    var currency_name = $('#currency_name').val();
-	    var currency_shortcode = $('#currency_shortcode').val();
+	function editLanguage(){
+	    var language_name = $('#language_name').val();
+	    var short_name = $('#short_name').val();
 	    var id = $('#id').val();
 	    
-	    console.log(currency_name)
+	    console.log(language_name)
 
 	    var next_step = true;
 	    var count = 0;
 
-	    if(currency_name === ''){
-            //alert('Please enter your package currency_name.');
-            $('#currency_name').focus();
-             $('.error_name').html('<span style="color:red;float:left;">Enter currency name</p>');
+	    if(language_name === ''){
+            //alert('Please enter your package language_name.');
+            $('#language_name').focus();
+             $('.error_name').html('<span style="color:red;float:left;">Enter language name.</p>');
             next_step = false;
         }
         else{
             $('.error_name').html('<span style="display:none"/>')
         }
-	    if(currency_shortcode === ''){
+	    if(short_name === ''){
             //alert('Please enter your package name.');
-            $('#currency_shortcode').focus();
-             $('.error_code').html('<span style="color:red;float:left;">Enter currency short code</p>');
+            $('#short_name').focus();
+             $('.short_code_error_name').html('<span style="color:red;float:left;">Enter language short name.</p>');
             next_step = false;
         }
         else{
-            $('.error_code').html('<span style="display:none"/>')
+            $('.short_code_error_name').html('<span style="display:none"/>')
         }
 
-	    //return false;
+        /*alert(language_name);
+	    return false;*/
 
 	    if(next_step && count == 0){
 	    	count++;
 	        $.ajax({
-	            url : "/edit-currency/"+id,
+	            url : "/update-language/"+id,
 	            type: 'post',
-	            data: {_token:CSRF_TOKEN, currency_name:currency_name, currency_shortcode:currency_shortcode, id:id},
+	            data: {_token:CSRF_TOKEN, language_name:language_name, short_name:short_name, id:id},
 	            success: function (data) {
 	                console.log(data);
 
@@ -138,7 +139,7 @@
 	                	$("#formID")[0].reset();
 
 		               	// Redraw Table After Insert										
-						var table = $('#currency').DataTable();
+						var table = $('#language').DataTable();
 
 						$('.input-sm').val("");
 						// #myInput is a <input type="text"> element

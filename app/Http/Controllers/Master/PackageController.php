@@ -187,8 +187,6 @@ class PackageController extends Controller
     public function updatePackage(Request $request, $id)
     {
     	$packagecheck = Package::find($id);
-
-    	//$exist_package_name = Package::where('package_name', $request->package_name)->first();
     	
     	$messageType = "";
 

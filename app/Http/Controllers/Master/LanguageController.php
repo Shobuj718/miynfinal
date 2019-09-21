@@ -66,11 +66,11 @@ class LanguageController extends Controller
         {
             foreach ($countries as $value)
             {
-                $edit =  route('edit.feature',$value->id);
+                $edit =  route('edit.language',$value->id);
 
                 $nestedData['id'] 					= $value->id;
                 $nestedData['language_name'] 		= $value->language_name;
-                $nestedData['short_name'] 		= $value->short_name;
+                $nestedData['short_name'] 			= $value->short_name;
                 $nestedData['created_at'] = date('j M Y h:i a',strtotime($value->created_at));
                 $nestedData['options'] = "<a href='{$edit}' class='btn btn-sm btn-warning ' pagename='Single language edit' data-remote='false' data-toggle='modal' data-target='.modal'>edit</a>";
                 $data[] = $nestedData;
@@ -127,6 +127,68 @@ class LanguageController extends Controller
     		$messageType = "error";
     		return response()->json([
 		            'message' => 'Something went wrong, Please try again!!!',
+		            'messageType'    => $messageType
+		        ]);
+    	}
+    }
+
+    public function editLanguage($id)
+    {
+    	$language = Language::find($id);
+    	return view('admin.master.language.edit-language', compact('language'));
+    }
+
+    public function updateLanguage(Request $request, $id)
+    {
+
+
+    	try {
+
+    		$languageCheck = Language::find($id);
+    	
+	    	$messageType = "";
+
+	    	if(gettype($languageCheck) == 'object'){
+
+	    		if($languageCheck->language_name == $request->language_name){
+	    			$languageCheck->short_name 	 = $request->short_name;
+	    			$languageCheck->save();
+
+	    			$messageType = "success";
+	    			return response()->json([
+			            'message' => 'Language Short Name Updated Successfully.',
+			            'messageType'    => $messageType,
+			            'result'  => $languageCheck,
+			            'type'  => gettype($languageCheck)
+			        ]);
+	    		}
+
+	    		else {
+			        $languageCheck->language_name = $request->language_name;
+			        $languageCheck->short_name = $request->short_name;
+			        $languageCheck->save();
+
+			        $messageType = "success";
+			    	return response()->json([
+			            'message' => 'Language Data Updated Successfully.',
+			            'data'    => $languageCheck,
+			            'messageType'    => $messageType,
+			            'result'  => $languageCheck
+			        ]);
+			    }
+	    	} 
+	    	else{
+	    		$messageType = "error";
+	    		return response()->json([
+		            'message' => 'Something went wrong, please try again!!!',
+		            'messageType'    => $messageType,
+		            'result'  => $languageCheck,
+		        ]);
+	    	}
+    	} catch (\Exception $e) {
+    		$messageType = "error";
+    		return response()->json([
+		            'message' => 'Language Name Already Exist, Please Choose Another.',
 		            'messageType'    => $messageType
 		        ]);
     	}

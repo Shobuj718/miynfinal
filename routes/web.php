@@ -100,6 +100,8 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::post('/all-language-show', 'Master\LanguageController@allLanguageShow')->name('all.language.show');
 	Route::get('/add-language', 'Master\LanguageController@addLanguage')->name('add.language');
 	Route::post('/add-language', 'Master\LanguageController@saveLanguage')->name('save.language');
+	Route::get('/edit-language/{id}', 'Master\LanguageController@editLanguage')->name('edit.language');
+	Route::post('/update-language/{id}', 'Master\LanguageController@updateLanguage')->name('update.language');
 
 });
 
