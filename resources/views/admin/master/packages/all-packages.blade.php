@@ -1,6 +1,6 @@
 @extends('admin.dashboard')
 
-@section('master', 'pcoded-hasmenu active pcoded-trigger')
+@section('master', 'active pcoded-trigger')
 @section('packages', 'active')
 
 
@@ -34,6 +34,14 @@
 <style type="text/css">
 
 	div.container { max-width: 1200px }
+
+  table.dataTable thead > tr > th {
+    padding-left: 8px;
+    padding-right: 30px;
+    padding-top: 5px;
+    line-height: 1.5;
+
+  }
 
 </style>
 @endsection

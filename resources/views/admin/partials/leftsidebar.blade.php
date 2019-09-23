@@ -23,7 +23,7 @@
 
     <ul class="pcoded-item pcoded-left-item">
         
-        <li class="@yield('master')">
+        <li class="pcoded-hasmenu @yield('master')">
             <a href="javascript:void(0)" class="waves-effect waves-dark">
                 <span class="pcoded-micon"><i class="ti-gift"></i><b>MS</b></span>
                 <span class="pcoded-mtext">MASTER</span>

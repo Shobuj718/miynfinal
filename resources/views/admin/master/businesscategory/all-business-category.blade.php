@@ -1,6 +1,6 @@
 @extends('admin.dashboard')
 
-@section('master', 'pcoded-hasmenu active pcoded-trigger')
+@section('master', 'active pcoded-trigger')
 @section('business-category', 'active')
 
 @section('styles')

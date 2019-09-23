@@ -138,7 +138,7 @@
            
         </div>
     </div>
-</div>
+    </div>
 
     <!-- modal end -->
 	
@@ -247,7 +247,7 @@ $(".modal").on("show.bs.modal", function(e) {
     // Do stuff
         // alert('called');
       } else {
-         $('.modal-body').html('<div style="display:block; text-align:center">loading</div>');
+         $('.modal-body').html('<div style="display:block; text-align:center">loading...</div>');
            $(".theme-loader").fadeIn("slow");
            //alert(variable);
            $.ajax({

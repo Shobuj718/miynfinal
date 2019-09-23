@@ -15,7 +15,7 @@ class CreateBusinessCategoriesTable extends Migration
     {
         Schema::create('business_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('business_category_name');
+            $table->string('business_category_name')->unique();;
             $table->timestamps();
             $table->softDeletes();
         });

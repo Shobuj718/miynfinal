@@ -1,11 +1,1 @@
-@extends('dashboard')
-
-
-
-@section('main-content')
-
-<div style="display: block; text-align: center;">
-This is test page
-</div>
-
-@endsection
+<h5>this is test file</h5>

@@ -1,5 +1,8 @@
 @extends('admin.dashboard')
 
+@section('master', 'active pcoded-trigger')
+@section('timezone', 'active')
+
 @section('styles')
  <!-- Data Table Css -->
       <link rel="stylesheet" type="text/css" href="{{ asset('/files/bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
