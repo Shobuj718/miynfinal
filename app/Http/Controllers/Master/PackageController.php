@@ -105,7 +105,7 @@ class PackageController extends Controller
                 $nestedData['package_name'] = $post->package_name;
                 $nestedData['package_description'] = substr(strip_tags($post->package_description),0,50)."...";
                 $nestedData['created_at'] = date('j M Y h:i a',strtotime($post->created_at));
-                $nestedData['options'] = "<a href='{$edit}' class='btn btn-sm btn-warning ' pagename='Single package edit' data-remote='false' data-toggle='modal' data-target='.modal'>edit</a>";
+                $nestedData['options'] = "<a href='{$edit}' class='btn btn-sm' style='background-color:#3c968a;color:#fff;' pagename='Single package edit' data-remote='false' data-toggle='modal' data-target='.modal'>edit</a>";
                 $data[] = $nestedData;
 
                 /*<a href='{$show}' class='btn btn-sm btn-info ' pagename='Single package details' data-remote='false' data-toggle='modal' data-target='.modal' >show</a>*/

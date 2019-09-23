@@ -65,7 +65,7 @@ class BusinessCategoryController extends Controller
                 $nestedData['id'] 					= $value->id;
                 $nestedData['business_category_name'] 		= $value->business_category_name;
                 $nestedData['created_at'] = date('j M Y h:i a',strtotime($value->created_at));
-                $nestedData['options'] = "<a href='{$edit}' class='btn btn-sm btn-warning ' pagename='Single business category edit' data-remote='false' data-toggle='modal' data-target='.modal'>edit</a>";
+                $nestedData['options'] = "<a href='{$edit}' class='btn btn-sm' style='background-color:#3c968a;color:#fff;' pagename='Single business category edit' data-remote='false' data-toggle='modal' data-target='.modal'>edit</a>";
                 $data[] = $nestedData;
 
 

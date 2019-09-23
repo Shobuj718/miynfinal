@@ -66,7 +66,7 @@ class IndustryController extends Controller
                 $nestedData['id'] 					= $value->id;
                 $nestedData['industry_name'] 		= $value->industry_name;
                 $nestedData['created_at'] = date('j M Y h:i a',strtotime($value->created_at));
-                $nestedData['options'] = "<a href='{$edit}' class='btn btn-sm btn-warning ' pagename='Single industry edit' data-remote='false' data-toggle='modal' data-target='.modal'>edit</a>";
+                $nestedData['options'] = "<a href='{$edit}' class='btn btn-sm' style='background-color:#3c968a;color:#fff;' pagename='Single industry edit' data-remote='false' data-toggle='modal' data-target='.modal'>edit</a>";
                 $data[] = $nestedData;
 
 

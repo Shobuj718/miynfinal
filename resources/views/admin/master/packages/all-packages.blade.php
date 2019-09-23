@@ -25,7 +25,12 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/files/assets/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/files/assets/css/jquery.mCustomScrollbar.css') }}">
 
-
+    <style type="text/css">
+      table.dataTable thead>tr>th.sorting_asc, table.dataTable thead>tr>th.sorting_desc, table.dataTable thead>tr>th.sorting, table.dataTable thead>tr>td.sorting_asc, table.dataTable thead>tr>td.sorting_desc, table.dataTable thead>tr>td.sorting {
+          padding-right: 30px;
+          padding-top: 10px;
+      }
+    </style>
 
 
 @endsection
@@ -91,7 +96,7 @@
                         <tr>
                            <th>Id</th>
                            <th>Name</th>
-                           <th>Description</th>
+                           <th data-orderable="false">Description</th>
                            <th data-orderable="false">Created At</th>
                            <th width="100" data-orderable="false">Options</th>
                         </tr>

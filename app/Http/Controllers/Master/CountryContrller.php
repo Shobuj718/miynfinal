@@ -68,7 +68,7 @@ class CountryContrller extends Controller
                 $nestedData['country_name'] = $value->country_name;
                 $nestedData['country_code'] = substr(strip_tags($value->country_code),0,50);
                 $nestedData['created_at'] = date('j M Y h:i a',strtotime($value->created_at));
-                $nestedData['options'] = "<a href='{$edit}' class='btn btn-sm btn-warning ' pagename='Single country edit' data-remote='false' data-toggle='modal' data-target='.modal'>edit</a>";
+                $nestedData['options'] = "<a href='{$edit}' class='btn btn-sm' style='background-color:#3c968a;color:#fff;' pagename='Single country edit' data-remote='false' data-toggle='modal' data-target='.modal'>edit</a>";
                 $data[] = $nestedData;
 
 

@@ -72,7 +72,7 @@ class LanguageController extends Controller
                 $nestedData['language_name'] 		= $value->language_name;
                 $nestedData['short_name'] 			= $value->short_name;
                 $nestedData['created_at'] = date('j M Y h:i a',strtotime($value->created_at));
-                $nestedData['options'] = "<a href='{$edit}' class='btn btn-sm btn-warning ' pagename='Single language edit' data-remote='false' data-toggle='modal' data-target='.modal'>edit</a>";
+                $nestedData['options'] = "<a href='{$edit}' class='btn btn-sm' style='background-color:#3c968a;color:#fff;' pagename='Single language edit' data-remote='false' data-toggle='modal' data-target='.modal'>edit</a>";
                 $data[] = $nestedData;
 
 
