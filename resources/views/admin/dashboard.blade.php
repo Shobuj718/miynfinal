@@ -29,12 +29,10 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/files/assets/icon/font-awesome/css/font-awesome.min.css') }}">
     <!-- scrollbar.css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('/files/assets/css/jquery.mCustomScrollbar.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('/files/assets/css/style.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('/files/assets/css/jquery.mCustomScrollbar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/files/assets/css/style.css') }}">
 
 
     
-     <link rel="stylesheet" type="text/css" href="{{ asset('/files/assets/css/jquery.mCustomScrollbar.css') }}">
      <style type="text/css">
          #noty-holder{    
              width: 100%;    
@@ -122,22 +120,22 @@
     <!-- modal start -->
 
     <div class="modal fade modal-flex" id="large-Modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Modal titles</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                
-            </div>
-            <div class="modal-body text-center">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal titles</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    
+                </div>
+                <div class="modal-body text-center">
+                   
+                    <p class="m-t-10"></p>
+                </div>
                
-                <p class="m-t-10"></p>
             </div>
-           
         </div>
-    </div>
     </div>
 
     <!-- modal end -->
@@ -155,8 +153,8 @@
                         <div class="user-box">
                             <div class="chat-search-box">
                                 <a class="back_friendlist">
-                      <i class="fa fa-chevron-left"></i>
-                    </a>
+                                  <i class="fa fa-chevron-left"></i>
+                                </a>
                                 <div class="right-icon-control">
                                     <form class="form-material">
                                         <div class="form-group form-primary">
@@ -236,36 +234,34 @@
     <script type="text/javascript">
         
         // Fill modal with content from link href
-$(".modal").on("show.bs.modal", function(e) {
-    var link = $(e.relatedTarget);
-        //alert(link.attr("href"));
-     //$(".modal-body").load(link.attr("href"));
-     $(".modal-title").html(link.attr("pageName"));
-      var variable = link.attr("href");
-     // alert(variable+'Myname');
-      if( typeof variable === 'undefined' || variable === null ){
-    // Do stuff
-        // alert('called');
-      } else {
-         $('.modal-body').html('<div style="display:block; text-align:center">loading...</div>');
-           $(".theme-loader").fadeIn("slow");
-           //alert(variable);
-           $.ajax({
-                type: 'get',
-                url: link.attr("href"),
-                //data:{id: id},
-                success: function(data) {
-                    $(".theme-loader").fadeOut("slow");
-                    $('.modal-body').html(data);
-                },
-                error:function(err){
-                  alert("error"+JSON.stringify(err));
-                }
-            });
-      } 
-});
-
-
+        $(".modal").on("show.bs.modal", function(e) {
+            var link = $(e.relatedTarget);
+                //alert(link.attr("href"));
+             //$(".modal-body").load(link.attr("href"));
+             $(".modal-title").html(link.attr("pageName"));
+              var variable = link.attr("href");
+             // alert(variable+'Myname');
+              if( typeof variable === 'undefined' || variable === null ){
+            // Do stuff
+                // alert('called');
+              } else {
+                 $('.modal-body').html('<div style="display:block; text-align:center">loading...</div>');
+                   $(".theme-loader").fadeIn("slow");
+                   //alert(variable);
+                   $.ajax({
+                        type: 'get',
+                        url: link.attr("href"),
+                        //data:{id: id},
+                        success: function(data) {
+                            $(".theme-loader").fadeOut("slow");
+                            $('.modal-body').html(data);
+                        },
+                        error:function(err){
+                          alert("error"+JSON.stringify(err));
+                        }
+                    });
+              } 
+        });
     </script>
 
     @yield('scripts')

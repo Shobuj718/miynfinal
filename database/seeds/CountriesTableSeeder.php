@@ -12,7 +12,7 @@ class CountriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $count = 250;
+        $count = 200;
         factory(Country::class, $count)->create();
     }
 }

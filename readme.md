@@ -11,8 +11,8 @@
 
 	- Clone the repo.
 	- Run 'composer install'
-	- Run 'php artisan key:generate'
 	- Run 'cp .env.example .env'
+	- Run 'php artisan key:generate'
 	- Run 'php artisan migrate'
 	- Run 'php artisan -serve'
 

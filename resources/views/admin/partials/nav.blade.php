@@ -19,7 +19,6 @@
         </div>
         <a href="{{ route('home') }}" style="display: inline-block;float: none; width: 157px;height: 58px;">
             <img class="" src="{{ asset('/files/assets/logo/miynlogo.png') }}" style="display: inline-block;float: none; width: 75px;height: 58px;" alt="miyn-Logo" />
-            <!-- <img class="img-fluid" src="{{ asset('/files/assets/images/logo.png') }}" alt="Theme-Logo" /> -->
         </a>
         <a class="mobile-options waves-effect waves-light">
             <i class="ti-more"></i>

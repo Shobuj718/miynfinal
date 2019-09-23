@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Master\Package;
 
-class PackagesTableSeeder extends Seeder
+class UsersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +11,6 @@ class PackagesTableSeeder extends Seeder
      */
     public function run()
     {
-        $count = 1000;
-        factory(Package::class, $count)->create();
+        factory(App\User::class, 1)->create();
     }
 }
