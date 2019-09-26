@@ -56,6 +56,48 @@
            padding: 40px 15px;
            text-align: center;
          }
+         table.table-bordered.dataTable th, table.table-bordered.dataTable td {
+            border-left-width: 0;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+         table.dataTable thead .sorting:before, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_desc_disabled:before {
+           right: 1em;
+           content: "\2191";
+           top: 0em;
+         }
+         table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after {
+             right: 0.5em;
+             content: "\2193";
+             top: 0em;
+         }
+
+         table.table-bordered.dataTable th {
+            line-height: 2.2;
+        }
+
+        .pcoded .pcoded-navbar .pcoded-item > li {
+            padding-top: 10px;
+        }
+
+        .footer-miyn {
+
+             display: block;
+            line-height: 2;
+            text-align: center;
+
+        }
+        .page-wrapper {
+            min-height: 400px;
+        }
+
+        @media screen and (min-width: 480px) {
+
+          form {
+            max-width: 480px;
+          }
+
      </style>
     
     @yield('styles')
@@ -189,7 +231,7 @@
                                     @yield('main-content')
                                 </div>
 								
-								<div style="display:block; text-align:center;">
+								<div class="footer-miyn" style="">
 									Copyright © <?php echo date('Y') ?> MIYN. All Rights Reserved.
 								</div>
 								

@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Master\Country;
 use App\Models\Master\Package;
 
+use DB;
+
 class CountryContrller extends Controller
 {
 	public function allCountry(){
@@ -134,16 +136,26 @@ class CountryContrller extends Controller
     	if(gettype($contrycheck) == 'object'){
 
     		if($contrycheck->country_name == $request->country_name){
-    			$contrycheck->country_code = $request->country_code;
-    			$contrycheck->save();
 
-    			$messageType = "success";
-    			return response()->json([
-		            'message' => 'Country Description Updated Successfully.',
-		            'messageType'    => $messageType,
-		            'result'  => $contrycheck,
-		            'type'  => gettype($contrycheck)
-		        ]);
+    			$result = DB::table('countries')->where('id', $id)->update([
+                            'country_code'     => $request->country_code
+                            ]);
+
+                if($result){
+                    $messageType = "success";
+                    return response()->json([
+                        'message' => 'Country Data Updated Successfully.',
+                        'messageType'    => $messageType,
+                        'result'  => $result
+                    ]);
+                }else{
+                    $messageType = "error";
+                    return response()->json([
+                        'message' => 'Country Data Not Updated.',
+                        'messageType'    => $messageType,
+                        'result'  => $result
+                    ]);
+                }
     		}
 
     		else {

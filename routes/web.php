@@ -25,6 +25,10 @@ Route::get('/test', 'HomeController@testfunction')->name('test');
 
 Route::group(['middleware' => ['auth']], function(){
 
+	//password change
+	Route::get('/password-change', 'HomeController@password_change')->name('password.change');
+	Route::post('/password-change-success/{id}', 'HomeController@password_change_success')->name('password.change.success');
+
 	// package all route
 	Route::get('/all-packages', 'Master\PackageController@allPackages')->name('all-packages');
 	Route::get('/package-json-data', 'Master\PackageController@allposts')->name('package.json.data');
@@ -60,6 +64,7 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::post('/add-timezone', 'Master\TimezoneController@saveTimezone')->name('save.timezone');
 	Route::get('/edit-timezone/{id}', 'Master\TimezoneController@editTimezone')->name('edit.timezone');
 	Route::post('/update-timezone/{id}', 'Master\TimezoneController@updateTimezone')->name('update.timezone');
+	Route::post('/delete-timezone/{id}', 'Master\TimezoneController@deleteTimezone')->name('delete.timezone');
 
 	//currency all route
 	Route::get('/all-currency', 'Master\CurrencyController@allCurrncy')->name('all.currency');

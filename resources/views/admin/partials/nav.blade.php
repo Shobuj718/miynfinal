@@ -84,10 +84,16 @@
                     </li>
 
                     <li class="waves-effect waves-light">
-                        <a href="#">
+                        <a href="{{ route('password.change') }}">
                             <i class="ti-settings"></i> Edit Password
                         </a>
                     </li>
+                    <li class="waves-effect waves-light">
+                        <a href="{{ route('password.change') }}" pageName="Edit Password" data-remote="false" data-toggle="modal" data-target=".modal"><i class="ti-settings"></i> Edit Password </a>
+                    </li>
+
+                    
+
 
                     <li class="waves-effect waves-light">
                         <a href="{{ route('logout') }}" onclick="event.preventDefault();

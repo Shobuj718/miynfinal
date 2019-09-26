@@ -86,6 +86,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12">
+
                     <!-- Authentication card start -->
                     <form method="POST" action="{{ route('login') }}" class="md-float-material form-material">
                       @csrf
@@ -97,6 +98,18 @@
                             <div class="card-block">
                                 <div class="row m-b-20">
                                     <div class="col-md-12">
+                                      
+                                        @if (session('success'))
+                                          <div class="alert alert-success background-success">
+                                                <strong>{{ session('success')}}</strong>
+                                           </div>
+                                        @endif
+                                        @if (session('error'))
+                                           <div class="alert alert-danger background-danger">
+                                               {{ session('error')}}
+                                           </div>
+                                        @endif
+
                                         <h3 class="text-center txt-primary">Sign In</h3>
                                     </div>
                                 </div>

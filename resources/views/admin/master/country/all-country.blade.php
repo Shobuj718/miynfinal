@@ -1,5 +1,6 @@
 @extends('admin.dashboard')
 
+@section('title', 'All Country ')
 @section('master', 'active pcoded-trigger')
 @section('country', 'active')
 

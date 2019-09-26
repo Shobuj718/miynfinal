@@ -1,5 +1,6 @@
 @extends('admin.dashboard')
 
+@section('title', 'All Package ')
 @section('master', 'active pcoded-trigger')
 @section('packages', 'active')
 
@@ -27,18 +28,14 @@
 
     <style type="text/css">
       table.dataTable thead>tr>th.sorting_asc, table.dataTable thead>tr>th.sorting_desc, table.dataTable thead>tr>th.sorting, table.dataTable thead>tr>td.sorting_asc, table.dataTable thead>tr>td.sorting_desc, table.dataTable thead>tr>td.sorting {
-          padding-right: 30px;
-          padding-top: 10px;
+          /*padding-right: 30px;
+          padding-top: 10px;*/
+          line-height: 2
       }
     </style>
+    <style type="text/css">
 
-
-@endsection
-
-@section('styles')
-<style type="text/css">
-
-	div.container { max-width: 1200px }
+  div.container { max-width: 1200px }
 
   table.dataTable thead > tr > th {
     padding-left: 8px;
@@ -48,7 +45,31 @@
 
   }
 
+  .pcoded .pcoded-navbar .pcoded-item > li {
+            padding-top: 10px;
+        }
+
+  .footer {
+      bottom : 0;
+      height:60px;
+      margin-top : 40px;
+      font-family: 'Lato';
+      background-color: #fff;
+      color: #000;
+      position: absolute;
+      width: 100%;
+      padding-right: 150px;
+      text-align: center;
+
+  }
+
 </style>
+
+
+@endsection
+
+@section('styles')
+
 @endsection
 @section('page_header')
 <div class="page-header">

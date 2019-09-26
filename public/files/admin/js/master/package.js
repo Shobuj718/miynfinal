@@ -138,19 +138,15 @@ function packageDataEdit(){
 	                	// reset form field
 	                	$("#formID")[0].reset();
 
-	                	/*$('#package_name').val("");
-						$('#package_description').val("");*/
-
-                        //location.reload();
-
 		               	// Redraw Table After Insert										
 						var table = $('#posts').DataTable();
 
-						
+						$('.input-sm').val("");
 						// #myInput is a <input type="text"> element
 						$('.input-sm').on( 'keyup', function () {
 							table.search( this.value ).draw();
 						} );
+						$( ".input-sm" ).trigger( "keyup" );
 
 	                }
 

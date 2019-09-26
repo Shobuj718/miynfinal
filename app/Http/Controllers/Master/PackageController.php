@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Master\Package;
 
+use DB;
+
 class PackageController extends Controller
 {
     public function allPackages()
@@ -16,7 +18,7 @@ class PackageController extends Controller
     	return view('admin.master.packages.all-packages', compact('packages'));
     }
 
-    public function packageJsonData()
+    public function checkUpdate()
     {
 
     	$packages = Package::all();
@@ -186,46 +188,57 @@ class PackageController extends Controller
 
     public function updatePackage(Request $request, $id)
     {
-    	$packagecheck = Package::find($id);
-    	
-    	$messageType = "";
+    	try {
+            $packagecheck = Package::find($id);
+            
+            $messageType = "";
 
-    	if(gettype($packagecheck) == 'object'){
+            if(gettype($packagecheck) == 'object'){
 
-    		if($packagecheck->package_name == $request->package_name){
-    			$packagecheck->package_description = $request->package_description;
-    			$packagecheck->save();
+                if($packagecheck->package_name == $request->package_name){
+                    
+                    $result = DB::table('packages')->where('id', $id)->update([
+                            'package_description'     => $request->package_description
+                            ]);
 
-    			$messageType = "success";
-    			return response()->json([
-		            'message' => 'Package Description Updated Successfully.',
-		            'messageType'    => $messageType,
-		            'result'  => $packagecheck,
-		            'type'  => gettype($packagecheck)
-		        ]);
-    		}
+                    if($result){
+                        $messageType = "success";
+                        return response()->json([
+                            'message' => 'Package Data Updated Successfully.',
+                            'messageType'    => $messageType,
+                            'result'  => $result
+                        ]);
+                    }else{
+                        $messageType = "error";
+                        return response()->json([
+                            'message' => 'Package Data Not Updated.',
+                            'messageType'    => $messageType,
+                            'result'  => $result
+                        ]);
+                    }
+                }
 
-    		else {
-		        $packagecheck->package_name = $request->package_name;
-		        $packagecheck->package_description = $request->package_description;
-		        $packagecheck->save();
+                else {
+                    $packagecheck->package_name = $request->package_name;
+                    $packagecheck->package_description = $request->package_description;
+                    $packagecheck->save();
 
-		        $messageType = "success";
-		    	return response()->json([
-		            'message' => 'Package Data Updated Successfully.',
-		            'data'    => $packagecheck,
-		            'messageType'    => $messageType,
-		            'result'  => $packagecheck
-		        ]);
-		    }
-    	} 
-    	else{
-    		$messageType = "error";
-    		return response()->json([
-	            'message' => 'Something went wrong, please try again!!!',
-	            'messageType'    => $messageType,
-	            'result'  => $packagecheck,
-	        ]);
-    	}
+                    $messageType = "success";
+                    return response()->json([
+                        'message' => 'Package Data Updated Successfully.',
+                        'data'    => $packagecheck,
+                        'messageType'    => $messageType,
+                        'result'  => $packagecheck
+                    ]);
+                }
+            } 
+        } catch (\Exception $e) {
+            $messageType = "error";
+            return response()->json([
+                'message' => 'Package Already Exist.',
+                'messageType'    => $messageType,
+                'result'  => $packagecheck,
+            ]);
+        }
     }
 }

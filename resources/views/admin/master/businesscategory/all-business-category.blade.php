@@ -1,5 +1,6 @@
 @extends('admin.dashboard')
 
+@section('title', 'All Business Category ')
 @section('master', 'active pcoded-trigger')
 @section('business-category', 'active')
 

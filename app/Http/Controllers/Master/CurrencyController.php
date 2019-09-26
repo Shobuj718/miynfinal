@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\Master\Currency;
+use DB;
 
 class CurrencyController extends Controller
 {
@@ -140,16 +141,27 @@ class CurrencyController extends Controller
     	if(gettype($currencycheck) == 'object'){
 
     		if($currencycheck->currency_name == $request->currency_name){
-    			$currencycheck->currency_shortcode = $request->currency_shortcode;
-    			$currencycheck->save();
 
-    			$messageType = "success";
-    			return response()->json([
-		            'message' => 'Currency Description Updated Successfully.',
-		            'messageType'    => $messageType,
-		            'result'  => $currencycheck,
-		            'type'  => gettype($currencycheck)
-		        ]);
+                $result = DB::table('currencies')->where('id', $id)->update([
+                            'currency_shortcode'     => $request->currency_shortcode
+                            ]);
+
+    			if($result){
+                    $messageType = "success";
+                    return response()->json([
+                        'message' => 'Currency Data Updated Successfully.',
+                        'messageType'    => $messageType,
+                        'result'  => $result
+                    ]);
+                }else{
+                    $messageType = "error";
+                    return response()->json([
+                        'message' => 'Currency Data Not Updated.',
+                        'messageType'    => $messageType,
+                        'result'  => $result
+                    ]);
+                }
+                    
     		}
 
     		else {

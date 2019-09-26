@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\Master\Timezone;
+use DB;
 
 class TimezoneController extends Controller
 {
@@ -69,8 +70,8 @@ class TimezoneController extends Controller
         {
             foreach ($countries as $value)
             {
-                $show =  route('country.show',$value->id);
-                $edit =  route('edit.timezone',$value->id);
+                $delete =  route('delete.timezone',$value->id);
+                $edit   =  route('edit.timezone',$value->id);
 
                 $nestedData['id'] = $value->id;
                 $nestedData['city_name'] = $value->city_name;
@@ -144,57 +145,69 @@ class TimezoneController extends Controller
     public function updateTimezone(Request $request, $id)
     {
 
-    	$timezonecheck = Timezone::find($id);
+        try {
 
-    	/*$messageType = "success";
-		    	return response()->json([
-		            'message' => 'Timezone Data Updated Successfully.',
-		            'data'    => $timezonecheck,
-		            'messageType'    => $messageType,
-		        ]);*/
+    	    $timezonecheck = Timezone::find($id);
+            $messageType = "";
+
+        	if(gettype($timezonecheck) == 'object'){
+
+                if($timezonecheck->city_name == $request->city_name){
+
+                    $result = DB::table('timezones')->where('id', $id)->update([
+                            'timezone_name'     => $request->timezone_name,
+                            'timezone_gmt'      => $request->timezone_gmt,
+                            'timezone_offset'   => $request->timezone_offset
+                            ]);
+
+                    if($result){
+                        $messageType = "success";
+                        return response()->json([
+                            'message' => 'Timezone Updated Successfully.',
+                            'messageType'    => $messageType,
+                            'result'  => $result,
+                            'type'  => gettype($timezonecheck)
+                        ]);
+                    }else{
+                        $messageType = "error";
+                        return response()->json([
+                            'message' => 'Timezone Not Updated.',
+                            'messageType'    => $messageType,
+                            'result'  => $result,
+                            'type'  => gettype($timezonecheck)
+                        ]);
+                    }
+                    
+                }
+
+                else {
+                    $timezonecheck->city_name           = $request->city_name;
+                    $timezonecheck->timezone_name       = $request->timezone_name;
+                    $timezonecheck->timezone_gmt        = $request->timezone_gmt;
+                    $timezonecheck->timezone_offset     = $request->timezone_offset;
+                    $timezonecheck->save();
+
+                    $messageType = "success";
+                    return response()->json([
+                        'message' => 'Timezone Data Updated Successfully.',
+                        'data'    => $timezonecheck,
+                        'messageType'    => $messageType,
+                        'result'  => $timezonecheck
+                    ]);
+                }
+            } 
+        } catch (\Exception $e) {
+            $messageType = "error";
+            return response()->json([
+                    'message' => 'Something went wrong, please try again!!!',
+                    'messageType'    => $messageType
+                ]);
+        }
     	
-    	$messageType = "";
+    }
 
-    	if(gettype($timezonecheck) == 'object'){
+    public function deleteTimezone()
+    {
 
-    		if($timezonecheck->city_name == $request->city_name){
-    			$timezonecheck->timezone_name   	= $request->timezone_name;
-		        $timezonecheck->timezone_gmt   		= $request->timezone_gmt;
-		        $timezonecheck->timezone_offset 	= $request->timezone_offset;
-		        $timezonecheck->save();
-
-    			$messageType = "success";
-    			return response()->json([
-		            'message' => 'Timezone Updated Successfully.',
-		            'messageType'    => $messageType,
-		            'result'  => $timezonecheck,
-		            'type'  => gettype($timezonecheck)
-		        ]);
-    		}
-
-    		else {
-		        $timezonecheck->city_name   		= $request->city_name;
-		        $timezonecheck->timezone_name   	= $request->timezone_name;
-		        $timezonecheck->timezone_gmt   	= $request->timezone_gmt;
-		        $timezonecheck->timezone_offset 	= $request->timezone_offset;
-		        $timezonecheck->save();
-
-		        $messageType = "success";
-		    	return response()->json([
-		            'message' => 'Timezone Data Updated Successfully.',
-		            'data'    => $timezonecheck,
-		            'messageType'    => $messageType,
-		            'result'  => $timezonecheck
-		        ]);
-		    }
-    	} 
-    	else{
-    		$messageType = "error";
-    		return response()->json([
-	            'message' => 'Something went wrong, please try again!!!',
-	            'messageType'    => $messageType,
-	            'result'  => $timezonecheck,
-	        ]);
-    	}
     }
 }

@@ -137,7 +137,7 @@ class BusinessCategoryController extends Controller
 
     			$messageType = "error";
     			return response()->json([
-		            'message' => 'Business Category Already Exist, Please Choose Another!!!',
+		            'message' => 'Business Category Not Updated.',
 		            'messageType'    => $messageType,
 		            'result'  => $businessCategoryCheck,
 		            'type'  => gettype($businessCategoryCheck)

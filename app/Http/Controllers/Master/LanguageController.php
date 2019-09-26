@@ -151,16 +151,25 @@ class LanguageController extends Controller
 	    	if(gettype($languageCheck) == 'object'){
 
 	    		if($languageCheck->language_name == $request->language_name){
-	    			$languageCheck->short_name 	 = $request->short_name;
-	    			$languageCheck->save();
 
-	    			$messageType = "success";
-	    			return response()->json([
-			            'message' => 'Language Short Name Updated Successfully.',
-			            'messageType'    => $messageType,
-			            'result'  => $languageCheck,
-			            'type'  => gettype($languageCheck)
-			        ]);
+                    $result = \DB::table('languages')->where('id', $id)->update(['short_name' => $request->short_name]);
+
+                    if($result){
+                        $messageType = "success";
+                        return response()->json([
+                            'message' => 'Language Data Updated Successfully.',
+                            'messageType'    => $messageType,
+                            'result'  => $result
+                        ]);
+                    }else{
+                        $messageType = "error";
+                        return response()->json([
+                            'message' => 'Language Data Not Updated.',
+                            'messageType'    => $messageType,
+                            'result'  => $result
+                        ]);
+                    }
+	    			
 	    		}
 
 	    		else {
@@ -177,18 +186,10 @@ class LanguageController extends Controller
 			        ]);
 			    }
 	    	} 
-	    	else{
-	    		$messageType = "error";
-	    		return response()->json([
-		            'message' => 'Something went wrong, please try again!!!',
-		            'messageType'    => $messageType,
-		            'result'  => $languageCheck,
-		        ]);
-	    	}
     	} catch (\Exception $e) {
     		$messageType = "error";
     		return response()->json([
-		            'message' => 'Language Name Already Exist, Please Choose Another.',
+		            'message' => 'Something went wrong, please try again!!!.',
 		            'messageType'    => $messageType
 		        ]);
     	}

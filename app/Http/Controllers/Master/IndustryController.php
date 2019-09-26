@@ -135,7 +135,7 @@ class IndustryController extends Controller
 
     			$messageType = "error";
     			return response()->json([
-		            'message' => 'Industry Already Exist, Please Choose Another!!!',
+		            'message' => 'Industry Data Not Updated.',
 		            'messageType'    => $messageType,
 		            'result'  => $industrycheck,
 		            'type'  => gettype($industrycheck)

@@ -139,7 +139,7 @@ class FeatureController extends Controller
 
 	    			$messageType = "error";
 	    			return response()->json([
-			            'message' => 'Feature Already Exist, Please Choose Another!!!',
+			            'message' => 'Feature Data Not Updated.',
 			            'messageType'    => $messageType,
 			            'result'  => $featureCheck,
 			            'type'  => gettype($featureCheck)
@@ -159,14 +159,6 @@ class FeatureController extends Controller
 			        ]);
 			    }
 	    	} 
-	    	else{
-	    		$messageType = "error";
-	    		return response()->json([
-		            'message' => 'Something went wrong, please try again!!!',
-		            'messageType'    => $messageType,
-		            'result'  => $featureCheck,
-		        ]);
-	    	}
     	} catch (\Exception $e) {
     		$messageType = "error";
     		return response()->json([

@@ -1,5 +1,6 @@
 @extends('admin.dashboard')
 
+@section('title', 'All Currency ')
 @section('master', 'active pcoded-trigger')
 @section('currency', 'active')
 
