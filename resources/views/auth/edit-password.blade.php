@@ -5,23 +5,23 @@
             <!-- <form action="{{route('password.change.success', $user->id)}}" method="POST"> -->
         <form id="edit-password" class="form-horizontal formular form-label-left" action="javascript:void(0)">
                 <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Current Password</label>
-                    <div class="col-sm-9">
+                    <label class="col-sm-4 col-form-label">Current Password</label>
+                    <div class="col-sm-8">
                         <input type="text" class="form-control" name="current_password" id="current_password" required="">
                         <input type="hidden" name="id" id="id" value="{{ $user->id }}">
                         <span class="current_pass_error"></span>
                     </div>
                 </div>    
                 <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">New Password</label>
-                    <div class="col-sm-9">
+                    <label class="col-sm-4 col-form-label">New Password</label>
+                    <div class="col-sm-8">
                         <input type="text" class="form-control" placeholder="Enter new password" name="new_password" id="new_password" required="">
                         <span class="new_pass_error"></span>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Confirm Password</label>
-                    <div class="col-sm-9">
+                    <label class="col-sm-4 col-form-label">Confirm Password</label>
+                    <div class="col-sm-8">
                         <input type="text" class="form-control" placeholder="Confirm password" name="confirm_password" id="confirm_password" required="">
                         <span class="confirm_pass_error"></span>
                     </div>
@@ -41,7 +41,7 @@
 
             var current_password    = $('#current_password').val();
             var new_password        = $('#new_password').val();
-            var confirm_password   = $('#confirm_password').val();
+            var confirm_password    = $('#confirm_password').val();
             var id                  = $('#id').val();
             
             console.log(current_password)

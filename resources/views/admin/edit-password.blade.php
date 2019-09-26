@@ -42,21 +42,21 @@
             <form action="{{route('password.change.success', $user->id)}}" method="POST">
                 @csrf          
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Current Password</label>
-                    <div class="col-sm-10">
+                    <label class="col-sm-4 col-form-label">Current Password</label>
+                    <div class="col-sm-8">
                         <input type="text" class="form-control" name="current_password" id="current_password" required="">
                         <input type="hidden" name="id" value="{{ $user->id }}">
                     </div>
                 </div>    
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">New Password</label>
-                    <div class="col-sm-10">
+                    <label class="col-sm-4 col-form-label">New Password</label>
+                    <div class="col-sm-8">
                         <input type="text" class="form-control" placeholder="Enter new password" name="new_password" id="new_password" required="">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Confirm Password</label>
-                    <div class="col-sm-10">
+                    <label class="col-sm-4 col-form-label">Confirm Password</label>
+                    <div class="col-sm-8">
                         <input type="text" class="form-control" placeholder="Confirm password" name="confirme_password" id="confirme_password" required="">
                     </div>
                 </div>

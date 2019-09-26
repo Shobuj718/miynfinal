@@ -22,12 +22,14 @@ Auth::routes();
 Route::get('/dashboard', 'HomeController@index')->name('home');
 Route::get('/test', 'HomeController@testfunction')->name('test');
 
+//password change
+	Route::get('/password-change', 'HomeController@password_change')->name('password.change');
+	Route::post('/password-change-success/{id}', 'HomeController@password_change_success')->name('password.change.success');
+	
 
 Route::group(['middleware' => ['auth']], function(){
 
-	//password change
-	Route::get('/password-change', 'HomeController@password_change')->name('password.change');
-	Route::post('/password-change-success/{id}', 'HomeController@password_change_success')->name('password.change.success');
+	
 
 	// package all route
 	Route::get('/all-packages', 'Master\PackageController@allPackages')->name('all-packages');

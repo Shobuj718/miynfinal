@@ -12,7 +12,7 @@ class TimezonesTableSeeder extends Seeder
      */
     public function run()
     {
-        $count = 1000;
+        $count = 100;
         factory(Timezone::class, $count)->create();
     }
 }
