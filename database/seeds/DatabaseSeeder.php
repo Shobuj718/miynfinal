@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PackagesTableSeeder::class);
         $this->call(TimezonesTableSeeder::class);
         $this->call(CountriesTableSeeder::class);
+        $this->call(BusinessWiseProfessionsTableSeeder::class);
     }
 }

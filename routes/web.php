@@ -110,6 +110,10 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::get('/edit-language/{id}', 'Master\LanguageController@editLanguage')->name('edit.language');
 	Route::post('/update-language/{id}', 'Master\LanguageController@updateLanguage')->name('update.language');
 
+	//Business Wise Profession all route
+	Route::get('/all-business-wise-professin', 'Master\BusinessWiseProfessionController@allBusinessWiseProfession')->name('all.business.wise.profession');
+	Route::post('/all-business-wise-professin-show', 'Master\BusinessWiseProfessionController@allBusinessWiseProfessionShow')->name('all.business.wise.profession.show');
+
 });
 
 

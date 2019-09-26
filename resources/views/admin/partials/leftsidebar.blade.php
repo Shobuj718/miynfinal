@@ -85,6 +85,13 @@
                         <span class="pcoded-mtext">List of  Language</span>
                         <span class="pcoded-mcaret"></span>
                     </a>
+                </li>
+                <li class="@yield('business-wise-profession')">
+                    <a href="{{ route('all.business.wise.profession') }}" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="ti-gift"></i><b>PA</b></span>
+                        <span class="pcoded-mtext">List of  Business Wise Profession</span>
+                        <span class="pcoded-mcaret"></span>
+                    </a>
                 </li>  
                 
             </ul>
