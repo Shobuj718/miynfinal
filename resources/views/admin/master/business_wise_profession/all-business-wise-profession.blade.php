@@ -2,7 +2,7 @@
 
 @section('title', 'All Language ')
 @section('master', 'active pcoded-trigger')
-@section('language', 'active')
+@section('business-wise-profession', 'active')
 
 @section('styles')
     <!-- Data Table Css -->
@@ -56,7 +56,7 @@
             <h5>All Business Wise Profession  list</h5>
             <span style="float: right;">
 
-            	<a href="{{ route('add.language') }}" pageName="Add New Language" data-remote="false" data-toggle="modal" data-target=".modal" class="btn btn-sm btn-primary waves-effect md-trigger"> Add New </a>
+            	<a href="{{ route('add.business.wise.profession') }}" pageName="Add New Business Wise Profession" data-remote="false" data-toggle="modal" data-target=".modal" class="btn btn-sm btn-primary waves-effect md-trigger"> Add New </a>
 
             	<button class="btn btn-sm btn-primary btn-danger" onclick="window.location.reload()" > Refresh </button>
             </span>
@@ -70,7 +70,7 @@
                            <th width="50">Id</th>
                            <th width="150">Profession Name</th>
                            <th width="150">Profession Description</th>
-                           <th width="150">Category ID</th>
+                           <th width="150">Category Name</th>
                            <th data-orderable="false" width="150">Created At</th>
                            <th width="100" data-orderable="false" >Action</th>
                         </tr>
@@ -130,7 +130,7 @@
                 { "data": "id", width: '50px' },
                 { "data": "profession_name" },
                 { "data": "profession_description" },
-                { "data": "category_id" },
+                { "data": "category_name" },
                 { "data": "created_at" },
                 { "data": "options" }
             ],

@@ -113,6 +113,10 @@ Route::group(['middleware' => ['auth']], function(){
 	//Business Wise Profession all route
 	Route::get('/all-business-wise-professin', 'Master\BusinessWiseProfessionController@allBusinessWiseProfession')->name('all.business.wise.profession');
 	Route::post('/all-business-wise-professin-show', 'Master\BusinessWiseProfessionController@allBusinessWiseProfessionShow')->name('all.business.wise.profession.show');
+	Route::get('/add-business-wise-profession', 'Master\BusinessWiseProfessionController@addBusinessWiseProfession')->name('add.business.wise.profession');
+	Route::post('/add-business-wise-profession', 'Master\BusinessWiseProfessionController@saveBusinessWiseProfession')->name('save.business.wise.profession');
+	Route::get('/edit-business-wise-profession/{id}', 'Master\BusinessWiseProfessionController@editBusinessWiseProfession')->name('edit.business.wise.profession');
+	Route::post('/update-business-wise-profession/{id}', 'Master\BusinessWiseProfessionController@updateBusinessWiseProfession')->name('update.business.wise.profession');
 
 });
 

@@ -11,4 +11,10 @@ class BusinessCategory extends Model
 
     protected $fillable = ['business_category_name'];
 
+
+    public function business_wise_professions()
+    {
+    	return $this->hasMany(BusinessWiseProfession::class, 'category_id');
+    }
+
 }
